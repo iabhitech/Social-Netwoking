@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" />
+   <link rel="stylesheet" href="css/addons-pro/chat.min.css" type="text/css" media="all" />
+   <link rel="stylesheet" href="css/mdb.min.css" type="text/css" media="all" />
+   <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+   <link rel="stylesheet" href="css/addons-pro/cards-extended.min.css" type="text/css">
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+   <title>Home</title>
+</head>
+
+<body>
+
+   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">iConnect</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+               <a class="nav-link" href="#" onclick="searchHome()">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#" onclick="searchChat()">Chats</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#" onclick="searchFriends()">Search</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#" onclick="findFriends()">Find Friends</a>
+            </li>
+         </ul>
+         <!-- <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+         </form> -->
+         <button class="btn btn-sm btn-outline-light">Logout</button>
+      </div>
+   </nav>
+
+   <div class="card rare-wind-gradient chat-room">
+      <div class="card-body mb-0 pb-0">
+
+         <!-- Grid row -->
+         <div class="row px-lg-2 px-2">
+
+            <!-- Grid column -->
+            <div class="col-md-6 col-xl-4 px-0">
+
+
+              <h6 class="font-weight-bold mb-3 text-center">Member</h6>
+              <div class="white z-depth-1 px-2 pt-3 pb-0 members-panel-1 scrollbar-light-blue scroll-overflow">
+                <ul class="list-unstyled friend-list">
+                  <li class="active grey lighten-3 p-2">
+                    <a href="#" class="d-flex align-items-center">
+                      <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg" alt="avatar" class="avatar rounded-circle d-flex align-self-center mr-3 z-depth-1">
+                      <div class="text-small ">
+                        <strong>Ambhuj Rathor</strong>
+                        <div class="last-message text-muted">Hello, Are you there?</div>
+                      </div>
+                      <div class="chat-footer ml-auto">
+                        <p class="text-smaller text-muted mb-0">Just now</p>
+                        <span class="badge badge-danger float-right">1</span>
+                      </div>
+                    </a>
+                  </li><!--User is active-->
+                  
+                  <% friends.forEach(f=>{ %>
+                  <!-- <a > -->
+                    <li class="p-2">
+                      <a href="/openChatmenu/<%= f._id %>?userId=<%=userId%>" class="d-flex align-items-center">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" alt="avatar" class="avatar rounded-circle d-flex align-self-center mr-3 z-depth-1">
+                        <div class="text-small">
+                          <strong><%=f.name%></strong>
+                          <div class="last-message text-muted"><%=f.email%></div>
+                        </div>
+                        <div class="chat-footer ml-auto">
+                          <p class="text-smaller text-muted mb-0">5 min ago</p>
+                          <span class="text-muted float-right"><i class="fas fa-mail-reply" aria-hidden="true"></i></span>
+                        </div>
+                      </a>
+                    </li>
+                    <input type="hidden" name="userId" value="<%=userId%>">
+                  <%})%><!--unactive Users-->
+                </ul>
+              </div>
+      
+            </div>
+      
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+
+                  <div class="col-md-6 col-xl-8 pl-md-3 px-lg-auto px-0 mb-0">
+
+                <!-- Search Bar -->
+                   <div id="search-menu" hidden="true">
+                  <h6 class="font-weight-bold mb-3 mt-2 text-center ">Search</h6>
+                  <div class="md-form">
+                     <i class="fas fa-search prefix"></i>
+                     <input class="form-control" id="listSearch" type="text" placeholder="Search">
+
+                  </div>
+
+
+                  <ul class="list-group members-panel-1 chat-1 scrollbar-light-blue p-3" id="myList">
+                     <%if(allUser[0]!=undefined){%>
+                        <% allUser.forEach(user=>{if(user._id.toString()!=userId.toString()){%>
+                         <li class="media my-4">
+                        <img class="avatar rounded-circle d-flex align-self-center mr-3 z-depth-1"
+                           src="https://mdbootstrap.com/img/Photos/Others/placeholder7.jpg"
+                           alt="Generic placeholder image">
+                        <div class="media-body">
+                           <h5 class="mt-0 mb-1 font-weight-bold"><%=user.name%></h5>
+                           <%=user.email%>
+                        </div>
+                        <button class="add-friend btn p-2">
+                           <i class="fas fa-user-plus"></i>
+                        </button>
+                     </li>
+                        <%}})}%>
+                  </ul>
+
+
+
+                </div>
+                     <!--Search Bar end -->
+
+                  <!-- find friends -->
+                  <div id="find-friends" hidden="true">
+                  <h6 class="font-weight-bold mb-3 mt-2 text-center">Find Friends</h6>
+
+                 <div class="getFrndRequest">
+                    <%if(frndUser[0]!=undefined){%>
+                  <h5>People Sends you Requests</h5>
+                  <ul class="scrollbar-light-blue white p-3 list-unstyled friend-list view overlay list-scroll" id="">
+                  <% frndUser.forEach(sender=>{%>
+                        <li class="media p-2">
+                           <a href="#" class="d-flex">
+                              <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-4.jpg" alt="avatar"
+                                 class="avatar rounded-circle d-flex align-self-center mr-4 z-depth-1">
+                              <div class="text-small">
+                                 <strong><%=sender.name%></strong>
+                                 <p class="last-message text-muted">
+                                    <%=sender.email%>                                </p>
+                              </div>
+                           </a>
+                           <div class="ml-auto form-inline">
+                              <form action="/acceptReq" method="post">
+                                 <input type="hidden" name="reqsenderId" value="<%=sender._id%>">
+                                 <input type="hidden" name="accepterId" value="<%=userId%>">
+                                 <button class="btn btn-sm btn-outline-primary ml-2" type="submit"><i class="fas fa-check"></i>
+                                    Accept</button>
+                              </form>
+                              <form action="/cancleReq" method="post">
+                                 <input type="hidden" name="reqsenderId" value="<%=sender._id%>">
+                                 <input type="hidden" name="accepterId" value="<%=userId%>">
+                                 <button class="btn btn-sm btn-outline-primary ml-2"><i class="fas fa-times" type="submit"></i>
+                                    Cancel</button>
+                              </form>
+                           </div>
+                        </li>
+                  <%})}%>
+                  </ul>
+                 </div>
+
+                 <%if(allUser[0]!=undefined){%>
+                  <ul class="scrollbar-light-blue white p-3 list-unstyled friend-list view overlay list-scroll" id="">
+
+                  <h6 >Suggested Friends</h6>
+                  <% allUser.forEach(user=>{if(user._id.toString()!=userId.toString()){%>
+                      <form action="/sendreq" method="post">
+                      <li class="media p-2">
+                        <a href="#" class="d-flex">
+                           <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" alt="avatar"
+                              class="avatar rounded-circle d-flex align-self-center mr-4 z-depth-1">
+                           <div class="text-small">
+                              <strong><%=user.name%></strong>
+                              <p class="last-message text-muted">
+                                 <%=user.email%>
+                              </p>
+                           </div>
+                        </a>
+                        <div class="ml-auto">
+                          <input type="hidden" name="reciverId" value="<%=user._id%>">
+                          <input type="hidden" name="senderId" value="<%=userId%>">
+                           <button type="submit" class="btn btn-sm btn-outline-primary ml-3"><i class="fas fa-user-plus"></i> Add
+                              Friend</button>
+                        </div>
+                     </li>
+                    </form>
+                  </ul>
+                  <%}})}%>
+                 
+               
+
+
+
+               </div>
+               <!--Find friends end -->
+
+               <!--Chat menu-->
+               <div id="chat-menu" hidden="true">
+
+
+                  <%if(chattingMode){%>
+                     <h6 class="font-weight-bold mb-3 mt-2 text-center ">Chats</h6>
+                  <div class="chat-message ">
+                     <ul class="list-unstyled chat-1 scrollbar-light-blue">
+                        <%if(chat){%>
+                     <% chat.chat.forEach(chat => {%>
+                        <%if(chat[2].toString()==userId){%>
+                           <li class="d-flex justify-content-between mb-4">
+                              <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="avatar"
+                                 class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
+                              <div class="chat-body white p-3 ml-2 z-depth-1">
+                                 <div class="header">
+                                    <strong class="primary-font">You</strong>
+                                    <small class="pull-right text-muted"><i class="far fa-clock"></i> <%=chat[1]%></small>
+                                 </div>
+                                 <hr class="w-100">
+                                 <p class="mb-0">
+                                    <%=chat[0]%>
+                                 </p>
+                              </div>
+                           </li>
+                           <%}else{%>
+                           <li class="d-flex justify-content-between mb-4">
+                              <div class="chat-body white p-3 z-depth-1">
+                                 <div class="header">
+                                    <strong class="primary-font">He</strong>
+                                    <small class="pull-right text-muted"><i class="far fa-clock"><%=chat[1]%></i> </small><!---->
+                                 </div>
+                                 <hr class="w-100">
+                                 <p class="mb-0">
+                                   <%=chat[0]%>
+                                 </p>
+                              </div>
+                              <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" alt="avatar"
+                                 class="avatar rounded-circle mr-0 ml-3 z-depth-1">
+                           </li>
+                           <%}%>
+                        <%})}%>
+                  </ul> 
+                  </div>
+
+                  <div class="rounded text-muted white pt-1 mt-2 pb-2 px-3 ">
+                     <div class=" md-form input-with-post-icon mr-0">
+                        <form action="/Sendmassage" method="post" class="d-flex">
+                           <input type="text" id="exampleForm2" class="form-control" style="width: 94%;" placeholder="Type a message..." name="massage">
+                           <button type="submit" class="btn btn-floating deep-purple"><i class="fas fa-chevron-right"></i></button>
+    
+                        <input type="hidden" name="senderId" value="<%=userId%>">
+                        <%if(chattingMode){%>
+                        <input type="hidden" name="reciverId" value="<%=chatterId%>"> 
+                        <%}%>
+                        <!-- <button type="submit" class="btn btn-sm pr-0 mr-0">input-prefix"
+                           <i class="fas fa-arrow-circle-right  fa-2x"></i> 
+                        </button>  -->
+                     </form>
+                     </div>
+                     <div>
+                        <a><i class="far fa-file-image mr-2"></i></a>
+                        <a><i class="far fa-laugh mr-2"></i></a>
+                        <a><i class="fas fa-gamepad mr-2"></i></a>
+                        <a><i class="fas fa-paperclip mr-2"></i></a>
+                        <a><i class="fas fa-camera mr-2"></i></a>
+                        <a><i class="fas fa-thumbs-up float-right"></i></a>
+                     </div>
+                  </div>
+                  <%}else{%>
+                     <h3>Select Your frnd to Chat</h3>
+                     <%}%>
+
+
+
+               </div>
+               <!--Chat menu end-->
+
+            </div>
+            <!-- Grid column -->
+
+         </div>
+         <!-- Grid row -->
+
+      </div>
+   </div>
+   <!-- Optional JavaScript -->
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"></script>
+
+   <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+
+   <script src="js/mdb.min.js" type="text/javascript" charset="utf-8"></script>
+   <script type="text/javascript" charset="utf-8">
+      //Filter list
+
+      $(document).ready(function () {
+         $("#listSearch").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myList li").filter(function () {
+               $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+         });
+      });
+   </script>
+
+   <script type="text/javascript" charset="utf-8">
+   function searchHome() {
+         document.getElementById("chat-menu").hidden = "true";
+         document.getElementById("find-friends").hidden = "true";
+         document.getElementById("search-menu").hidden = "true";
+      }
+      function searchChat() {
+         document.getElementById("chat-menu").hidden = "";
+         document.getElementById("find-friends").hidden = "true";
+         document.getElementById("search-menu").hidden = "true";
+      }
+      function searchFriends() {
+         document.getElementById("chat-menu").hidden = "true";
+         document.getElementById("find-friends").hidden = "true";
+         document.getElementById("search-menu").hidden = "";
+      }
+      function findFriends() {
+         document.getElementById("chat-menu").hidden = "true";
+         document.getElementById("search-menu").hidden = "true";
+         document.getElementById("find-friends").hidden = "";
+      }
+   </script>
+
+</body>
+
+</html>

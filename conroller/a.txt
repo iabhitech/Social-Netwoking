@@ -1,0 +1,74 @@
+       var id=[]
+                    a=user.friends;
+                       User.find({_id:a.friendsId}).then(c=>{
+                       User.find().then(allUser=>{
+                           if(c[0]){
+                            counta=0
+                            for (i=0;i<allUser.length;i++){
+                                counta=0
+                              for ( j=0;j<a.friendsId.length;j++){
+                                  if(a.friendsId[j].toString()!=allUser[i]._id.toString()){         
+                                      counta++;
+                                      if(counta==a.friendsId.length){
+                                          id.push(allUser[i]._id.toString())
+                                      }
+                                  }
+                              }
+                          }
+                          id.push((user._id.toString()));
+                          User.find({_id:id}).then(allUser=>{
+                              if(allUser[0]!=undefined){
+                                User.find({_id:user.friendsReq.friendsId}).then(frndUser=>{
+                                    if(allUser){
+                                        return res.render('chat-box/index.ejs',{
+                                            friends:c,
+                                            userId:user._id,
+                                            allUser:allUser,
+                                            frndUser:frndUser,
+                                            chat:chat,
+                                            chatterId:chatter,
+                                            chattingMode:true,
+                                
+                                        })
+                                    }
+                                    else{
+                                        return res.render('chat-box/index.ejs',{
+                                            friends:c,
+                                            userId:user._id,
+                                            allUser:null,
+                                            frndUser:frndUser,
+                                            chat:chat.chat,
+                                            chatterId:chatter,
+                                            chattingMode:true
+                                        })
+                                    }
+                                  
+                                }).then(result=>console.log("Done")).catch(err=>{console.log(err)})
+                              }
+                             })
+                           }
+                           else{
+                            User.find().then(allUser=>{
+                                User.find({_id:user.friendsReq.friendsId}).then(frndUser=>{
+                                     return res.render('chat-box/index.ejs',{
+                                        friends:c,
+                                        userId:user._id,
+                                        allUser:allUser,
+                                        frndUser:frndUser,
+                                        chat:chat.chat,
+                                        chatterId:chatter,
+                                        chattingMode:true
+                                    })
+                                    }).then(result=>{
+                                        console.log("Done").catch(err=>{
+                                        console.log(err);
+                                    })
+    
+                                })
+                               }).catch(err=>{
+                                   console.log(err);
+                               })
+                       }
+                       })
+                
+            });

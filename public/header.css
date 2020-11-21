@@ -1,0 +1,70 @@
+body{
+    margin: 0;
+    line-height: 1.5;
+    background-color: #eeeeee;
+
+}
+*{
+    box-sizing: border-box;
+    margin:0;
+
+}
+.container{
+    max-width: 1170px;
+    margin: auto;
+}
+.row{
+   display: flex;
+   flex-wrap: wrap; 
+}
+.algin-item-center{
+    align-items: center;
+}
+.justify-contant-between {
+    justify-content: space-between;
+}
+.header {
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: 99;
+    width: 100%;
+}
+.header .brand-Name{
+    padding: 15px;
+}
+.header .brand-Name a{
+    text-decoration: none;
+    font-size: 30px;
+    color: #555555;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.header .brand-Name a:hover{
+    color: rgb(120,120,180);
+}
+.header .nav{
+    padding: 0 15px;
+}
+.header .nav ul{
+   list-style: none;
+   margin: 0;
+   padding: o;  
+}
+.header .nav ul li{
+    display: inline-block;
+     margin-left: 30px;
+}
+.header .nav ul li a{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+    color: #555555;
+    padding: 25px 0;
+    display: block;
+}
+.header .nav ul li a:hover{
+    color: red;
+}

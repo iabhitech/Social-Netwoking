@@ -1,0 +1,130 @@
+
+
+.list-scroll{
+  height: 36vh;
+  position: relative;
+  overflow-y: scroll;
+}
+
+
+
+.post-avatar{
+  height: 50px;
+  width: 50px;
+}
+.comment-avatar{
+  height: 40px;
+  width: 40px;
+}
+.status-avatar{
+  height: 65px;
+  width: 65px;
+}
+
+
+
+.double-nav .breadcrumb-dn {
+  color: #fff;
+}
+.side-nav.wide.slim .sn-ad-avatar-wrapper a span {
+display: none;
+}
+
+
+.nav-scroll{
+  height: 100vh;
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.side-nav.wide {
+  width: 20em;
+}
+.side-nav.wide.slim {
+  width: 5rem;
+}
+
+.container{
+  /* margin-left: 19em; */
+  margin-left:auto;
+  max-width: 56rem;
+}
+
+@media (max-width: 1440px)
+{
+  .container{
+     margin-left: 5rem; 
+  }
+}
+@media(max-width: 1080px)
+{
+  .container{
+    margin-left: 0;
+  }
+  
+}
+/* @media (min-width: 1441px)
+{
+  .fixed-sn .double-nav, .fixed-sn footer, .fixed-sn main {
+    padding-left: 20rem; 
+  }
+  
+} */
+
+
+.status-active-state{
+    position: relative;
+    display: block;
+    background-color: #007E33;
+    height: .75rem;
+    width: .75rem;
+
+    margin-left: 3rem;
+    left: auto;
+    top: -0.8rem;
+    border-radius: 50%;
+    border: .1rem solid #fff;
+}
+.member-active-state{
+  position: relative;
+  background-color: #007E33;
+  height: .65rem;
+  min-width: .65rem;
+  z-index: 2;
+  top: 1.9rem;
+  right: .65rem;
+  border-radius: 50%;
+  border: .1rem solid #fff;
+}
+
+
+.friend-requests{
+  position: fixed;
+  overflow-y: scroll;
+  top: 5.5rem;
+  bottom: 0;
+  right: 5px;
+  margin-top: auto;
+  margin-bottom: 0;
+  width: 20.5rem;
+  max-height: 88vh;
+}
+
+@media (max-width: 350px){
+  .friend-requests{
+    width: auto;
+  }
+}
+
+.reaction{
+  cursor: pointer;
+}
+.reactions{
+  margin-bottom: 3rem;
+  max-height: 20%;
+  overflow-y: scroll;
+}
+
+.custom-color{
+  background-color: #243a51;
+}

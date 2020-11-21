@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logged In</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="header.css">
+</head>
+<body style="background-color:#eeeeee;">
+    <%- include('../templates/navigation.ejs') %><br/><br/><br/>
+    <h1 style="text-align: center; margin-top:50px;" >You are Sucssesfully LoggedIn</h1>
+    <form action="<%if(!Otp4forgeeting){%>/postotp<%}else{%>/postSubsequent<%}%>" method="post" onsubmit="return validate()">
+        <div class="form-group">
+            <h2 class="h2">Enter Your OTP</h2>
+            <input type="number" min="0000" max="9999" class="input"  name="otp" id="optByUser" minlength="4" maxlength="4" autocomplete="off"/>
+        </div>
+        <span style="font-family: bolt; font-size: 16px; Color: red;align-self: center;" class="span" > </span>
+        <input type="hidden" name="otp2" value="<%=otp%>">
+        <%if(!Otp4forgeeting){%>}
+            <input type="hidden" name="name" value="<%= name%>">
+            <input type="hidden" name="email" value="<%=email %>">
+            <input type="hidden" name="password" value="<%=password%>">
+        <%}else{%>
+            <input type="hidden" name="userId" value="<%=userId%>">
+        <%}%>
+        <button type="submit" class="submit-btn">Register</button>
+    </form>
+</body>
+</html>

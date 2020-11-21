@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<body>
+    <a href="/Chatbox">Skip</a>
+    <form action="/signup" method="post">
+        <div>
+            <label for="Name">Name</label><br>
+            <input type="text" name="text" id="texta" maxlength="20" minlength="3" placeholder="MAX" onkeydown="myfx()" onkeyup="myfx2()" onfocus="myfx()" onblur="myfx2()" autocomplete="off"><br>
+            <span id="1" style="font-family: bolt; font-size: 20px; Color: red;"></span><br>
+        </div>
+   
+        <div>
+            <label for="MID NAME">Mid Name</label><br>
+        <input type="text" name="MidName" id="MidName" minlength="3" maxlength="20" placeholder="million"><br>
+        </div>
+    
+        <div>
+            <label for="Sir Name">Sirname</label><br>
+            <input type="text" name="text" id="Sirname" minlength="3" maxlength="20" placeholder="crush"><br>
+        </div>
+    
+        <div>
+            <label for="Mobile">Mobile Number</label><br>
+            <input type="number" name="number" id="number" minlength="10" maxlength="10" placeholder="000000000000" autocomplete="off" onkeydown="numbera()"> 
+            <span id=2></span>
+        </div>
+    
+        <div>
+            <label for="password">Password</label><br>
+            <input type="password" name="password" id="password" minlength="5" maxlength="15" placeholder="Max%123"><br>
+             <span id="password"></span>
+        </div>
+    
+
+    <button type="submit" id="btn">Signup</button>   
+    </form>
+    <script>
+        var Name=document.getElementById("texta");
+        var span_name=document.getElementById("1");
+        var a=document.getElementById("number");
+        var span_email=document.getElementById("2");
+        myfx=()=>{
+            if(Name.nodeValue==null){
+                span_name.innerHTML="Please fill Your Name";
+                return false;
+            }
+        }
+        
+        myfx2=()=>{
+            console.log("pppp");
+        }
+        
+        function numbera(){
+            if(a.innerHTML.nodeValue){
+                if(a.innerHTML.nodeValue.lenght!=10){
+                span_email.nodeValue="Your Mobile number Must contain 10 digits"
+                return false;
+            }
+            }
+            
+        }
+    </script>
+</body>
+</html>
