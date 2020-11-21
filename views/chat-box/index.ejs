@@ -548,17 +548,78 @@
             </ol>
         </nav>
 
-            <!-- Card -->
+            <!-- Card Dashboard-->
         <div class="card testimonial-card mx-2 mb-2">
 
             <!-- Background color -->
             <div class="card-up indigo lighten-1"></div>
-        
+
             <!-- Avatar -->
-            <div class="avatar mx-auto white">
-            <img src="/<%=user.imageUrl%>" class="rounded-circle"
+            <div class="avatar mx-auto white view overlay" data-toggle="modal" data-target="#basicExampleModal">
+                <img src="/<%=user.imageUrl%>" class="rounded-circle"
                 alt="woman avatar">
+                <!-- <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg" class="rounded-circle "
+                alt="woman avatar"> -->
+
+                <div class="mask rgba-blue-light flex-center">
+                    <p class="white-text"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Edit</p>
+                </div>
+
             </div>
+
+
+            <!-- Photo Upload trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
+    Launch demo modal
+  </button>
+   -->
+  <!-- Modal  Profile Photo Upload-->
+  <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Profile Photo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form class="text-center" action="/removeProfilePhoto" method="post" >
+                <input type="hidden" name="userId" value="<%=user._id%>"><br>
+                <button class="btn btn-sm btn-outline-primary btn-rounded waves-effect" type="submit">Remove Profile Photo</button>
+                <a href="/<%=user.imageUrl%>" rel='nofollow' class="btn btn-sm btn-primary btn-rounded waves-effect" download>Download Profile Photo</a>
+            </form>
+
+            <hr>
+            <div class="text-center text-muted">Or</div>
+
+            <form class="md-form" action="/uploadProfilePhoto" method="post" enctype="multipart/form-data">
+                <div class="file-field form-inline text-center">
+                  <a class="btn-floating peach-gradient mt-0 float-left">
+                    <i class="fas fa-paperclip" aria-hidden="true"></i>
+                    <input type="file" name="userProfilePhoto" id="userProfilePhoto">
+                    <input type="hidden" name="userId" value="<%=user._id%>">
+                  </a>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload your file" readonly="true">
+                  </div>
+                  <button class="btn btn-sm btn-primary btn-rounded waves-effect" type="submit">Upload</button>
+                </div>
+              </form>      
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary btn-sm">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+            <!-- 
             <form action="/uploadProfilePhoto" method="post" enctype="multipart/form-data">
                 <input type="file" name="userProfilePhoto" id="userProfilePhoto">
                 <input type="hidden" name="userId" value="<%=user._id%>">
@@ -568,7 +629,7 @@
             <form action="/removeProfilePhoto" method="post" >
                 <input type="hidden" name="userId" value="<%=user._id%>"><br>
                 <button type="submit">Remove Profile Pic</button>
-            </form>
+            </form> -->
         
             <!-- Content -->
             <div class="card-body">
@@ -593,11 +654,11 @@
             </div>
   
         </div>
-            <!-- Card -->
+            <!-- Card Dashboard-->
 
 
 
-               <!-- Classic tabs -->
+               <!-- Classic tabs Menu -->
                <div class="classic-tabs mx-2">
 
     
@@ -811,7 +872,7 @@
                 </div>
               
               </div>
-              <!-- Classic tabs -->
+              <!-- Classic tabs Menu-->
 
           
 
